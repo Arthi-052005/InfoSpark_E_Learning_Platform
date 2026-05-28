@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduFlow - Browse Courses</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c3c0ff",
+                    "inverse-surface": "#263143",
+                    "primary": "#3525cd",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-tint": "#4d44e3",
+                    "surface-variant": "#d8e3fb",
+                    "surface-bright": "#f9f9ff",
+                    "surface-container": "#e7eeff",
+                    "on-secondary-container": "#006172",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "on-surface-variant": "#464555",
+                    "surface-container-highest": "#d8e3fb",
+                    "error": "#ba1a1a",
+                    "on-surface": "#111c2d",
+                    "tertiary-fixed": "#e9ddff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "primary-container": "#4f46e5",
+                    "secondary": "#00687a",
+                    "on-secondary-fixed": "#001f26",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-container-low": "#f0f3ff",
+                    "surface": "#f9f9ff",
+                    "inverse-primary": "#c3c0ff",
+                    "on-primary-container": "#dad7ff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#6f3dd9",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#571ac0",
+                    "outline-variant": "#c7c4d8",
+                    "surface-dim": "#cfdaf2",
+                    "surface-container-high": "#dee8ff",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#777587",
+                    "secondary-fixed": "#acedff",
+                    "background": "#f9f9ff",
+                    "on-background": "#111c2d",
+                    "secondary-container": "#57dffe",
+                    "on-tertiary-container": "#e3d5ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-tertiary-fixed": "#23005c",
+                    "inverse-on-surface": "#ecf1ff",
+                    "primary-fixed": "#e2dfff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "3xl": "64px",
+                    "container-max": "1280px",
+                    "xl": "32px",
+                    "2xl": "48px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary/20">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-surface/80 shadow-sm border-b border-surface-variant">
+<div class="flex justify-between items-center h-[72px] px-margin-mobile md:px-lg max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors lg:hidden">
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+</button>
+<div class="text-headline-md font-headline-md font-bold text-primary">EduFlow</div>
+</div>
+<!-- Desktop Navigation -->
+<div class="hidden lg:flex items-center gap-xl">
+<a class="text-primary font-bold border-b-2 border-primary py-2 font-label-md text-label-md" href="#">Browse Courses</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors py-2 font-label-md text-label-md" href="#">My Learning</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors py-2 font-label-md text-label-md" href="#">Categories</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="hidden md:flex items-center gap-xs px-md py-sm rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</button>
+<button class="px-xl py-sm bg-primary text-on-primary rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+                    Login
+                </button>
+</div>
+</div>
+</nav>
+<!-- Sidebar Overlay (Hidden by default) -->
+<div class="fixed inset-0 bg-black/40 z-[60] hidden opacity-0 transition-opacity duration-300" id="drawer-overlay"></div>
+<!-- Main Content Area -->
+<main class="pt-[72px] min-h-screen">
+<!-- Header & Search Section -->
+<section class="bg-surface-container-low py-2xl">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-xl">
+<div class="max-w-2xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-md">Expand your professional horizons</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Choose from over 2,000 online video courses with new additions published every month.</p>
+</div>
+</div>
+<!-- Search & Filters Container -->
+<div class="mt-3xl grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-8 relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-[52px] pr-md py-md bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-md text-body-md" placeholder="What do you want to learn today?" type="text"/>
+</div>
+<div class="lg:col-span-4 flex gap-md">
+<select class="flex-1 px-md py-md bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary font-label-md text-label-md appearance-none">
+<option>Newest First</option>
+<option>Most Popular</option>
+<option>Price: Low to High</option>
+</select>
+<button class="p-md bg-primary-container text-on-primary-container rounded-xl flex items-center justify-center hover:opacity-90">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Course Listings Section -->
+<section class="py-3xl max-w-container-max mx-auto px-margin-mobile md:px-lg">
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Filters Sidebar -->
+<aside class="hidden lg:block w-64 flex-shrink-0">
+<div class="space-y-2xl">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-md uppercase tracking-wider">Categories</h3>
+<div class="space-y-sm">
+<label class="flex items-center gap-md group cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Development</span>
+</label>
+<label class="flex items-center gap-md group cursor-pointer">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Design</span>
+</label>
+<label class="flex items-center gap-md group cursor-pointer">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Business</span>
+</label>
+<label class="flex items-center gap-md group cursor-pointer">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Marketing</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-md uppercase tracking-wider">Ratings</h3>
+<div class="space-y-sm">
+<label class="flex items-center gap-md group cursor-pointer">
+<input class="w-5 h-5 border-outline-variant text-primary focus:ring-primary" name="rating" type="radio"/>
+<div class="flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">&amp; up</span>
+</div>
+</label>
+<label class="flex items-center gap-md group cursor-pointer">
+<input class="w-5 h-5 border-outline-variant text-primary focus:ring-primary" name="rating" type="radio"/>
+<div class="flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">&amp; up</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</aside>
+<!-- Course Grid -->
+<div class="flex-1">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Course Card 1 -->
+<div class="group bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A clean top-down view of a modern laptop on a white desk with a small succulent and a cup of coffee. The screen shows lines of code in a professional editor. The lighting is soft and natural, emphasizing a bright, focused workspace in a Corporate Modern style with Indigo accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkzAjwDOE4M3NfaTe5_NeF5NAdUw3Wk125zJ1W5s6HWDLuUxAEMP0yIgIvoWtBB6Bzlv5NQl116iQcds3FlyRGJ49ZFoE041CqTzbm9ZlC7HKgF4KCsGd6oShLS022NxAN0wuoQMlafmpUNh_AQGK66GBn3MOhFKN2gd9AEzktYGuGCh-0pOXD8_RL9Z3Uk87yP5nHG_a7vRWf8VSFmm7Bg9Dgf8ObCU8E3TWbzly3GaWD5oFolMyZ5dzbGc0wqxDZfn9rMRjDnRrL"/>
+<div class="absolute top-md left-md">
+<span class="px-sm py-xs bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-md shadow-sm">Bestseller</span>
+</div>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-[18px] leading-tight text-on-surface mb-xs group-hover:text-primary transition-colors">Full Stack Web Development with React</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Dr. Angela Smith, Software Engineer</p>
+<div class="flex items-center gap-xs mb-md">
+<span class="font-label-md text-label-md text-secondary">4.8</span>
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">(12,450)</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md text-on-surface">$89.99</span>
+<span class="font-body-md text-body-md text-outline line-through">$129.99</span>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="group bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A macro shot of a sleek smartphone displaying a minimalist UI with beautiful typography and soft pastel gradients. Beside it are color swatches and a tablet stylus. The aesthetic is extremely clean and professional, featuring a bright light-mode setting with Soft Cyan and Slate-200 accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbGfGvp28DoXSTKrBP3eagLPhNX0GCdfUCiSjE6UkYNDgbsVTPOHD1GxxwHlv234H9sO11HhtvvUDuRLXHFmZ5WdCHSrRbbnWo-wE4q9NKUZ2ZolC27CrIi3EI9ws6Yx2m8zYR2In1bHJYB_Q6HV5pK_yiptnMZ6n4nZuouFV6xKy7YyidRZYRvQHCLPG-aFHp_bql0GMW4AKUXA17sFuzfj-4aTQo_sKNLQhI3gl3CAFnmV0_G5MhusSO7wga7z7pgS_kMdUutLe3"/>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-[18px] leading-tight text-on-surface mb-xs group-hover:text-primary transition-colors">Mastering UX/UI Design Principles</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Marcus Holloway, Senior Designer</p>
+<div class="flex items-center gap-xs mb-md">
+<span class="font-label-md text-label-md text-secondary">4.9</span>
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">(8,920)</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md text-on-surface">$74.99</span>
+<span class="font-body-md text-body-md text-outline line-through">$99.99</span>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="group bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An analytical dashboard shown on a high-resolution monitor in a bright office environment. The screen displays vibrant bar charts and line graphs. Professional atmosphere with soft morning sunlight streaming through a window. The color palette consists of primary indigos and clean neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJrBFJQ15f1MYZyRfsLVeRaLoH0gLXOz8fQ5mG2gTiJtae6CefB2cTMcbhG9sxbWrViKJopvNTnQyplLjijayxjG3wSydy8-SRVAM90kwaXPY7f9y8yK_KnOq7h8JOE42ocg31Bl94zf7Tb1G_0K7k7ulLrUwHPl959SjFdhKP-G5Sxr0LkhckJoJBAw4rTjc62Rli7qgBvAyTaNv5wxCJH8K9-NdkqLRIYfdinbNhNhjE-9m_cx_zxQ3K99uVxf7J0_QrEy2H0wF5"/>
+<div class="absolute top-md left-md">
+<span class="px-sm py-xs bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-md shadow-sm">Bestseller</span>
+</div>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-[18px] leading-tight text-on-surface mb-xs group-hover:text-primary transition-colors">Data Science &amp; Machine Learning Bootcamp</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Sarah Chen, Data Scientist</p>
+<div class="flex items-center gap-xs mb-md">
+<span class="font-label-md text-label-md text-secondary">4.7</span>
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">(15,100)</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md text-on-surface">$94.99</span>
+<span class="font-body-md text-body-md text-outline line-through">$149.99</span>
+</div>
+</div>
+</div>
+<!-- Course Card 4 -->
+<div class="group bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A focused business professional in a modern, glass-walled boardroom using a tablet to explain complex strategy maps. The setting is bright, airy, and sophisticated. The lighting is crisp, highlighting high-quality textures. Colors focus on Deep Indigo, Slate-200, and professional neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUeSX2kIyxRaIY-FYvKQ1iTzfR7_m-IXq0nNc7WfBcdVNQq_s1-8C6Izk6GAZUPKuKTrEtxqiv0imrakfQix9uYD-i9-bSOIcPIAbtC7zU-n8g6N1BpvVcd_eljWNX-uYsM5kHRNOaDy2ZmhHC1RYLOAP56RpipJKnbiaApXiEu8FSjSC_6tabr9JKQFGJft-EdSJa4aBVLdEh0safbZgbGKKiUlok17a_AXoR3xWcMKgxYlbSPIC9L8n_aePH24yh0e-NRVnMg-qw"/>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-[18px] leading-tight text-on-surface mb-xs group-hover:text-primary transition-colors">Strategic Business Management 2024</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Robert Sterling, MBA</p>
+<div class="flex items-center gap-xs mb-md">
+<span class="font-label-md text-label-md text-secondary">4.6</span>
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">star_half</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">(5,340)</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md text-on-surface">$59.99</span>
+<span class="font-body-md text-body-md text-outline line-through">$89.99</span>
+</div>
+</div>
+</div>
+<!-- Course Card 5 -->
+<div class="group bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A dynamic digital marketing workspace with a high-end camera, microphone, and multiple screens displaying analytics and social media content. The atmosphere is energetic and creative. High-key lighting with a crisp white desk and subtle indigo branding elements. Corporate Modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXIdqVtx_PrNgsqbeeQjlsPzox0Otr1QDEFQW1kigqm_M9L2pdQGajGy4f1LuRKQ4Pkm7m_0IUmrtK1xkIw1ARSLRt248BO3Sg_GsXhatTiwDa9EnvlrmOO3ZB4Vj82chphw_bc-rZ0xZWY8oDW8NqB3gErxLT2niACFb74lqB9F7S68BFuOLsPSaalFYuXmJxR37aJA0mRcqClVV-PzhjrmvhoRw-CZEoFE4Tg-4h47S_CKF9viCWWWexkpydaMe7U0GmENpvS1P6"/>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-[18px] leading-tight text-on-surface mb-xs group-hover:text-primary transition-colors">The Complete Digital Marketing Guide</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Elena Rodriguez, Marketing Guru</p>
+<div class="flex items-center gap-xs mb-md">
+<span class="font-label-md text-label-md text-secondary">4.8</span>
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">(22,000)</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md text-on-surface">$49.99</span>
+<span class="font-body-md text-body-md text-outline line-through">$199.99</span>
+</div>
+</div>
+</div>
+<!-- Course Card 6 -->
+<div class="group bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A sleek minimalist home office setup with a high-end desktop computer, a designer chair, and a bookshelf filled with tech books. The lighting is warm yet professional. The design is airy with plenty of whitespace, focusing on a premium SaaS aesthetic using Slate neutrals and Indigo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTt4avSrBr1USmpIDKo6uQXy8waobPp7z1-2xy20in7C58MK5YZpcV_aly2aIUETu6s4aloe-84lZB0al_GmEmoVfyy1rtcTbt5JJoIQw2LntkGI20kLO6VulShEJQVKKwtJ1IAfZreckg730LnHFPl5RmGlatSPVoLX7-P4pjqvLHS4Kdb0Eoobi0ObsL25j0jTxZC7P3HjZ_NBEJpqz6JUCta44joh03uoo04TQU7mfWMRJjOpz0rLtoZHkU1Nwd5sjWYYnSoqXF"/>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-[18px] leading-tight text-on-surface mb-xs group-hover:text-primary transition-colors">Advanced Python: From Zero to Hero</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Jameson Lock, Python Core Developer</p>
+<div class="flex items-center gap-xs mb-md">
+<span class="font-label-md text-label-md text-secondary">4.5</span>
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">star_half</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">(3,200)</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md text-on-surface">$64.99</span>
+<span class="font-body-md text-body-md text-outline line-through">$84.99</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-3xl flex flex-col items-center gap-xl">
+<button class="px-3xl py-md bg-surface-container-lowest border border-primary text-primary rounded-full font-label-md text-label-md hover:bg-primary-container/10 active:scale-95 transition-all">
+                            Load More Courses
+                        </button>
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-on-primary font-label-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors font-label-md">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors font-label-md">3</button>
+<span class="text-outline">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors font-label-md">24</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-surface-variant mt-3xl">
+<div class="w-full py-2xl px-margin-mobile md:px-lg max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="col-span-2 md:col-span-1">
+<div class="font-headline-md text-headline-md text-primary mb-md">EduFlow</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[200px]">Empowering learners worldwide through quality video-based instruction and practical projects.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-md">Platform</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">Browse Courses</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">Teaching</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">Mobile App</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-md">Company</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">About Us</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">Careers</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-md">Legal</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">Terms of Service</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">Privacy Policy</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-all" href="#">Cookie Settings</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-lg py-xl border-t border-surface-variant text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 EduFlow E-Learning. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple micro-interactions for the load more button
+        const loadMoreBtn = document.querySelector('button:contains("Load More")');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                this.innerHTML = '<span class="flex items-center gap-sm"><svg class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Loading...</span>';
+                setTimeout(() => {
+                    this.textContent = 'Load More Courses';
+                }, 1500);
+            });
+        }
+
+        // Custom selector polyfill for :contains as it's not standard CSS
+        window.addEventListener('DOMContentLoaded', () => {
+            const btns = document.querySelectorAll('button');
+            btns.forEach(btn => {
+                if(btn.textContent.trim() === 'Load More Courses') {
+                    btn.addEventListener('click', function() {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<span class="flex items-center gap-sm"><svg class="animate-spin h-5 w-5 text-primary" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Loading...</span>';
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                        }, 1000);
+                    });
+                }
+            });
+        });
+    </script>
+</body></html>
